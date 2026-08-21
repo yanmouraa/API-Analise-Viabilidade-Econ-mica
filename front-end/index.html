@@ -14,11 +14,6 @@
                 <datalist id="datalist"></datalist>
             </div>
             <div>
-                <label for="">Ano: </label>
-                <input type="number" name="ano" id="inp-ano" list="datalist-ano">
-                <datalist id="datalist-ano"></datalist>
-            </div>
-            <div>
                 <button type="submit">Enviar</button>
             </div>
         </form>
@@ -26,10 +21,7 @@
 
     <section>
         <p>Município: <span id="municipio"></span></p>
-        <p>RREO - Receita Corrente Líquida: <span id="rcl"></span></p>
-        <p>RGF - Despesa Total com Pessoas: <span id="dtp"></span></p>
-        <p>RGF - Despesa Total com Pessoas %: <span id="dtp-percentual">A calcular</span></p>
-        <p>RREO - Transferências FUNDEB: <span id="fundeb"></span></p>
+        <div id="historico"></div>
     </section>
 
     <script src="./api.js"></script>
