@@ -3,27 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Analise de Viabilidade Economica</title>
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <section>
-        <form id="form-municipio" action="">
-            <div>
-                <label for="">Municipio: </label>
-                <input type="text" name="municipio" id="inp-municipio" list="datalist">
-                <datalist id="datalist"></datalist>
+    <section class="TG_AVE">
+        <section class="form_container">
+            <form id="form-municipio" class="form_municipio">
+                <div>
+                    <label>Municipio: </label>
+                    <input type="text" name="municipio" id="inp-municipio" list="datalist">
+                    <datalist id="datalist"></datalist>
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </section>
+        <section class="dados_container">
+            <p>Município: <span id="municipio"></span></p>
+            <div id="historico" class="tabela_container"></div>
+            <div id="grafico-container" class="grafico">
+                <canvas id="grafico"></canvas>
             </div>
-            <div>
-                <button type="submit">Enviar</button>
-            </div>
-        </form>
+        </section>
     </section>
 
-    <section>
-        <p>Município: <span id="municipio"></span></p>
-        <div id="historico"></div>
-    </section>
+    
 
-    <script src="./api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/charts.js"></script>
 </body>
 </html>
