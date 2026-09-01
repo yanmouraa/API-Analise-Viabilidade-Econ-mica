@@ -79,10 +79,23 @@ function renderHistorico(dados) {
 
     indicadores.forEach((indicador) => {
         const linha = document.createElement("tr");
+        const classeRcl = indicador.nome === "RCL" ? " rcl" : "";
         const classeDtpPercentual = indicador.nome === "DTP%" ? " dtp_percentual" : "";
+        const classeDtp = indicador.nome === "DTP" ? " dtp" : "";
+        const classeFundeb = indicador.nome === "FUNDEB" ? " fundeb" : "";
 
+        if (classeRcl) {
+            linha.classList.add("rcl");
+        }
+        
         if (classeDtpPercentual) {
             linha.classList.add("dtp_percentual");
+        }
+        if (classeDtp) {
+            linha.classList.add("dtp");
+        }
+        if (classeFundeb) {
+            linha.classList.add("fundeb");
         }
 
         linha.innerHTML = `
@@ -90,7 +103,7 @@ function renderHistorico(dados) {
             ${dados.map((dado) => {
                 const ano = String(dado.ano);
                 const classeAno = ano.replace(/[^a-zA-Z0-9_-]/g, "-");
-                return `<td class="coluna_ano coluna_ano-${classeAno}${classeDtpPercentual}" data_ano="${ano}">${indicador.valor(dado)}</td>`;
+                return `<td class="coluna_ano coluna_ano-${classeAno}${classeDtpPercentual}${classeDtp}" data_ano="${ano}">${indicador.valor(dado)}</td>`;
             }).join("")}
         `;
         tbody.appendChild(linha);
@@ -108,13 +121,13 @@ function verificarDtp() {
         const valor = Number.parseFloat(celula.textContent.replace("%", ""));
 
         if (valor >= 48.6 && valor < 51.3) {
-            celula.style.backgroundColor = "yellow";
+            celula.style.color = "yellow";
         } else if (valor >= 51.3 && valor < 54) {
-            celula.style.backgroundColor = "orange";
+            celula.style.color = "orange";
         } else if (valor >= 54) {
-            celula.style.backgroundColor = "red";
+            celula.style.color = "red";
         } else {
-            celula.style.backgroundColor = "limegreen";
+            celula.style.color = "limegreen";
         }
     });
 };

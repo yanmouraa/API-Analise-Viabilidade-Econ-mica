@@ -1,0 +1,124 @@
+//Como o browser nao entende sass é necessario compilar para css
+//sass --watch styles/variables.scss:variables.css
+//estude como utilizar scss em estruturas de projetos grandes
+
+@import "./variables.scss";
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.TG_AVE {
+    @include flexColumn();
+    padding: 2rem;
+
+    .form_municipio {
+        @include flexSpaceBetween();
+        gap: 1rem;
+        border: none;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        padding: .5rem;;
+
+        .search_card {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            .label_municipio {
+                font-weight: bold;
+            }
+            .search_container {
+                @include flexSpaceBetween();
+                gap: 1rem;
+
+                button {
+                    @include flexCenter();
+                    cursor: pointer;
+                    max-height: 20px;
+                    height: 100%;
+                }
+
+                .search_icon{
+                    height: 10px;
+                    width: 10px;
+                }
+            }
+        }
+    }
+
+    .dados_container {
+        @include flexColumn();
+        max-width: 1200px;
+        width: 100%;
+        gap: 2rem;
+
+        .tabela_container {
+            @include flexCenter();
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+            max-height: 250px;
+            height: 100%;
+            max-width: 900px;
+            width: 100%;
+
+            .tabela_historico {
+                border-collapse: collapse;
+                height: 100%;
+                width: 100%;
+
+                .tabela_thead {
+                    height: 2rem;
+
+                    tr {
+                        border: 1px solid black;
+                        padding: .5rem;
+                        
+                    }
+                }
+
+                .tabela_tbody {
+                    tr {
+                        border: 1px solid black;
+                        padding: 1rem;
+                        height: 2rem;
+
+                        td {
+                            text-align: center;
+                            margin: 5rem;
+                            font-size: 15px;
+                        }
+
+                        th {
+                            text-align: center;
+                            padding: 0 .5rem;
+                        }
+                    }
+                }
+
+                colgroup {
+                    col {
+                        margin: 1rem;
+                    }
+                }
+            }
+        }
+
+        .grafico {
+            @include flexCenter();
+            width: 60%;
+            gap: 2rem;
+
+            canvas {
+                max-height: 300px;
+                height: 100%;
+                max-width: 500px;
+                width: 100%;
+                border: 1px solid black;
+                padding: .5rem;
+            }
+        }
+    }
+}
