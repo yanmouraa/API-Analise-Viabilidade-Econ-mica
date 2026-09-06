@@ -18,6 +18,8 @@
     "source-map-js": "^1.2.1"
   },
   "scripts": {
+    "build:css": "sass styles/index.scss styles/index.css",
+    "watch:css": "sass --watch styles/index.scss:styles/index.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

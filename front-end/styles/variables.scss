@@ -16,3 +16,20 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@mixin cardBorder() {
+    border: 1px solid #E1E4E9;
+    box-shadow: $shadow;
+    border-radius: $border-radius;
+    background-color: $branco;
+}
+
+$border-radius: 10px;
+$cinza-claro: #EEF0F2;
+$cinza-bc: #F4F5F7;
+$cinza-linha-tabela: #ecedee;
+$branco: #FFFFFF;
+$vermelho: #C62828;
+$vermelho-escuro: #7F1616;
+$shadow: 0 8px 24px rgba(20,22,30,.06), 0 2px 6px rgba(20,22,30,.04);
+$vermelho-gradiente: linear-gradient(155deg, $vermelho 0%, $vermelho-escuro 100%);

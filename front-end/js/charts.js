@@ -30,24 +30,26 @@ const grafico = new Chart(ctx, {
         labels: [],
         datasets: [{
             label: 'Evolução RCL (%)',
-            data: []
+            data: [],
+            backgroundColor: 'rgba(250, 162, 40, 0.6)'
         }, {
             label: 'Evolução DTP (%)',
-            data: []
+            data: [],
+            backgroundColor: 'rgba(191, 26, 26, 0.6)'
         }, {
             label: 'Evolução FUNDEB (%)',
-            data: []
+            data: [],
+            backgroundColor: 'rgba(234, 13, 113, 0.6)'
         }]
     },
     options: {
         responsive: true,
         plugins: {
             legend: {
-                position: 'top'
+                display: false
             },
             title : {
-                display: true,
-                text: 'Evolução Anual (%)'
+                display: false
             }
         },
         animations: {
@@ -72,24 +74,27 @@ const grafico2 = new Chart(ctx2, {
         labels: [],
         datasets: [{
             label: 'Evolução RCL (%)',
-            data: []
+            data: [],
+            backgroundColor: 'rgba(250, 162, 40, 0.6)'
         }, {
             label: 'Evolução DTP (%)',
-            data: []
+            data: [],
+            backgroundColor:'rgba(191, 26, 26, 0.6)'
+
         }, {
             label: 'Evolução FUNDEB (%)',
-            data: []
+            data: [],
+            backgroundColor: 'rgba(234, 13, 113, 0.6)'
         }]
     },
     options: {
         responsive: true,
         plugins: {
             legend: {
-                position: 'top'
+                display: false
             },
             title : {
-                display: true,
-                text: 'Evolução Anual Acumulada (%)'
+                display: false
             }
         },
         animations: {

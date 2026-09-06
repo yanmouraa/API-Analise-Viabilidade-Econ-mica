@@ -1,7 +1,6 @@
 const dataList = document.querySelector("#datalist");
 const inpMunicipio = document.querySelector("#inp-municipio");
 const formMunicipio = document.querySelector("#form-municipio");
-const campoMunicipio = document.querySelector("#municipio");
 const historicoContainer = document.querySelector("#historico");
 
 const formatarMoeda = new Intl.NumberFormat("pt-BR", {
@@ -24,6 +23,11 @@ async function atualizarDataList() {
         option.value = municipio;
         dataList.appendChild(option);
     });
+
+    if (municipios.length > 0) {
+        inpMunicipio.value = municipios[0];
+        await buscarMunicipio();
+    }
 }
 
 
@@ -114,6 +118,8 @@ function renderHistorico(dados) {
     verificarDtp();
 }
 
+renderHistorico([]);
+
 function verificarDtp() {
     const dtpPercentual = document.querySelectorAll("td.dtp_percentual");
 
@@ -121,13 +127,13 @@ function verificarDtp() {
         const valor = Number.parseFloat(celula.textContent.replace("%", ""));
 
         if (valor >= 48.6 && valor < 51.3) {
-            celula.style.color = "yellow";
+            celula.style.color = "#e6bc26";
         } else if (valor >= 51.3 && valor < 54) {
-            celula.style.color = "orange";
+            celula.style.color = "#ff8400";
         } else if (valor >= 54) {
-            celula.style.color = "red";
+            celula.style.color = "#ec1717";
         } else {
-            celula.style.color = "limegreen";
+            celula.style.color = "#27a34c";
         }
     });
 };
@@ -156,7 +162,6 @@ async function buscarMunicipio() {
 
     const municipio = await result.json();
     console.log(municipio);
-    campoMunicipio.textContent = municipio.municipio;
     renderHistorico(municipio.dados);
     window.atualizarGrafico(municipio.dados);
 }

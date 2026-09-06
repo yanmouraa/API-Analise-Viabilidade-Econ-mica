@@ -6,11 +6,24 @@
     <title>Analise de Viabilidade Economica</title>
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
 </head>
 <body>
+    <header>
+
+        <div class="img_container">
+            <img src="img/Logo-Inova.jpg" alt="Logo-Inova" class="logo_inova">
+        </div>
+        <!-- <div class="icon_header">
+            <span class="material-symbols-outlined">bar_chart</span>
+        </div> -->
+
+        <h1>Analise de Viabilidade Economica</h1>
+    </header>
     <section class="TG_AVE">
         
         <form id="form-municipio" class="form_municipio">
@@ -20,18 +33,50 @@
                 <div class="search_container">
                     <input type="text" name="municipio" id="inp-municipio" list="datalist">
                     <datalist id="datalist"></datalist>
-                    <button type="submit"><span class="material-symbols-outlined" class="search_icon">search</span>Pesquisar</button>
+                    <button type="submit"><span class="material-symbols-outlined" class="search_icon">search</span>Consultar</button>
                 </div>
 
             </div>
         </form>
        
         <div class="dados_container">
-            <p>Município: <span id="municipio"></span></p>
             <div id="historico" class="tabela_container"></div>
             <div id="grafico-container" class="grafico">
-                <canvas id="grafico-ev-anual"></canvas>
-                <canvas id="grafico-ev-acumulada"></canvas>
+                <div class="grafico_1">
+                    <p>Evolução Percentual Anual</p>
+                    <canvas id="grafico-ev-anual"></canvas>
+                    <div class="info_dots">
+                        <div class="dot_container">
+                            <div class="dot" style="background: rgba(250, 162, 40, 0.6)"></div> RCL
+                        </div>
+
+                        <div class="dot_container">
+                            <div class="dot" style="background: rgba(191, 26, 26, 0.6);"></div> DTP
+                        </div>
+
+                        <div class="dot_container">
+                            <div class="dot" style="background: rgba(234, 13, 113, 0.6);"></div> FUNDEB
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grafico_2">
+                    <p>Evolução Percentual Acumulada</p>
+                    <canvas id="grafico-ev-acumulada"></canvas>
+                    <div class="info_dots">
+                        <div class="dot_container">
+                            <div class="dot" style="background: rgba(250, 162, 40, 0.6)"></div> RCL
+                        </div>
+
+                        <div class="dot_container">
+                            <div class="dot" style="background: rgba(191, 26, 26, 0.6);"></div> DTP
+                        </div>
+
+                        <div class="dot_container">
+                            <div class="dot" style="background: rgba(234, 13, 113, 0.6);"></div> FUNDEB
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
