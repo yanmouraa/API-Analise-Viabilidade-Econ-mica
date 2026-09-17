@@ -12,18 +12,41 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
 </head>
-<body>
+<body class="sidebar_collapsed">
     <header>
 
         <div class="img_container">
             <img src="img/Logo-Inova.jpg" alt="Logo-Inova" class="logo_inova">
         </div>
-        <!-- <div class="icon_header">
-            <span class="material-symbols-outlined">bar_chart</span>
-        </div> -->
 
         <h1>Analise de Viabilidade Economica</h1>
     </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Navegação principal">
+        <div class="sidebar_header">
+            <a class="sidebar_brand" href="#dashboard" aria-label="Inova Dashboard">
+                <span class="sidebar_brand_mark">IN</span>
+                <span class="sidebar_brand_name">INOVA</span>
+            </a>
+            <button class="sidebar_toggle" id="sidebar-toggle" type="button" aria-label="Expandir menu" aria-expanded="false" title="Expandir menu">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="sidebar_nav">
+            <a class="sidebar_link active" href="index.html" data-nav-item aria-current="page" title="Viabilidade Econômica">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-3M20 16V6"></path></svg>
+                <span>Viabilidade Econômica</span>
+            </a>
+            <a class="sidebar_link" href="DS.html" data-nav-item title="Defasagem Salarial">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v5l3 2"></path></svg>
+                <span>Defasagem Salarial</span>
+            </a>
+        </nav>
+    </aside>
+
     <section class="TG_AVE">
         
         <form id="form-municipio" class="form_municipio">
@@ -84,6 +107,7 @@
     
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/sidebar.js"></script>
     <script src="./js/api.js"></script>
     <script src="./js/charts.js"></script>
 </body>

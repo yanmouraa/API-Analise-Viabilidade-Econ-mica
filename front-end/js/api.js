@@ -2,6 +2,7 @@ const dataList = document.querySelector("#datalist");
 const inpMunicipio = document.querySelector("#inp-municipio");
 const formMunicipio = document.querySelector("#form-municipio");
 const historicoContainer = document.querySelector("#historico");
+const MUNICIPIO_STORAGE_KEY = "ultimoMunicipio";
 
 const formatarMoeda = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -25,7 +26,8 @@ async function atualizarDataList() {
     });
 
     if (municipios.length > 0) {
-        inpMunicipio.value = municipios[0];
+        const ultimoMunicipio = sessionStorage.getItem(MUNICIPIO_STORAGE_KEY);
+        inpMunicipio.value = municipios.includes(ultimoMunicipio) ? ultimoMunicipio : municipios[0];
         await buscarMunicipio();
     }
 }
@@ -161,6 +163,7 @@ async function buscarMunicipio() {
     }
 
     const municipio = await result.json();
+    sessionStorage.setItem(MUNICIPIO_STORAGE_KEY, nome);
     console.log(municipio);
     renderHistorico(municipio.dados);
     window.atualizarGrafico(municipio.dados);
