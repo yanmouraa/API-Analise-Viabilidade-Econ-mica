@@ -1,21 +1,24 @@
-import express from "express";
-import cors from "cors";
 import prisma from "./prisma.js";
-import routes from "./routes.js";
+import app from "./app.js";
 
-const app = express();
-const port = 3000;
+const PORT = Number.parseInt(process.env.PORT || "3000", 10);
 
-app.use(cors());
-app.use(express.json());
-app.use(routes);
-
-app.listen(port, async () => {
+async function startServer() {
     try {
         await prisma.$connect();
+        app.listen(PORT, () => {
+            console.log(`Servidor rodando na porta ${PORT}`);
+        });
     } catch (error) {
-        console.log("Erro ao conectar ao banco de dados", error);
+        console.error("Erro ao conectar ao banco de dados", error);
+        process.exit(1);
     }
-    console.log(`Servidor rodando na porta ${port}`);
+}
+
+process.on("SIGTERM", async () => {
+    await prisma.$disconnect();
+    process.exit(0);
 });
+
+startServer();
 
