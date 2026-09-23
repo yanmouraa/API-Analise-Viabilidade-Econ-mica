@@ -2,6 +2,29 @@ import { Router } from "express";
 import prisma from "./prisma.js";
 const router = Router();
 
+function normalizarNome(nome) {
+    return String(nome)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase("pt-BR")
+        .trim();
+}
+
+async function encontrarMunicipio(nome) {
+    const municipios = await prisma.municipio.findMany({
+        include: {
+            dados: {
+                orderBy: {
+                    ano: "asc"
+                }
+            }
+        }
+    });
+
+    const nomeNormalizado = normalizarNome(nome);
+    return municipios.find((municipio) => normalizarNome(municipio.nome) === nomeNormalizado);
+}
+
 router.get("/all-municipios", async (req, res) => {
     const municipios = await prisma.municipio.findMany({
         select: {
@@ -24,21 +47,7 @@ router.get("/municipios/:nome", async (req, res) => {
         });
     }
 
-    const municipio = await prisma.municipio.findFirst({
-        where: {
-            nome: {
-                equals: nome,
-                mode: "insensitive"
-            }
-        },
-        include: {
-            dados: {
-                orderBy: {
-                    ano: "asc"
-                }
-            }
-        }
-    });
+    const municipio = await encontrarMunicipio(nome);
 
     if (!municipio) {
         return res.status(404).json({
@@ -75,21 +84,7 @@ router.post("/municipios", async (req, res) => {
         });
     }
 
-    const municipio = await prisma.municipio.findFirst({
-        where: {
-            nome: {
-                equals: nome,
-                mode: "insensitive"
-            }
-        },
-        include: {
-            dados: {
-                orderBy: {
-                    ano: "asc"
-                }
-            }
-        }
-    });
+    const municipio = await encontrarMunicipio(nome);
 
     if (!municipio) {
         return res.status(404).json({
@@ -117,5 +112,9 @@ router.post("/municipios", async (req, res) => {
     });
 });
 
+router.get("/pspn", async (req, res) => {
+    const pspn = await prisma.PSPN.findMany();
+    return res.json(pspn);
+});
 
 export default router;

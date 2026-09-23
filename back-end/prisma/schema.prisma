@@ -31,3 +31,20 @@ model DadosFinanceiros {
 
   @@unique([municipioId, ano])
 }
+
+model PSPN {
+  id       Int      @id @default(autoincrement())
+  ano      Int
+  nivel    String
+  classe   Int
+  salario  Decimal  @db.Decimal(15,2)
+}
+
+model SalarioMunicipio {
+  id          Int      @id @default(autoincrement())
+  municipio   String
+  ano         Int
+  nivel       String
+  classe      Int
+  salario     Decimal  @db.Decimal(15,2)
+}

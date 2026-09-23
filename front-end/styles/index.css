@@ -13,7 +13,6 @@ body {
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
-  transition: padding-left 0.28s ease;
 }
 
 body.sidebar_collapsed {
@@ -246,12 +245,145 @@ header .icon_header span {
   color: #FFFFFF;
 }
 
-.page_placeholder {
+.DS_intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1440px;
+  margin: 0 auto 1.5rem;
+  gap: 2rem;
+}
+
+.DS_filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #E1E4E9;
+  box-shadow: 0 8px 24px rgba(20, 22, 30, 0.06), 0 2px 6px rgba(20, 22, 30, 0.04);
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  max-width: 600px;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+.DS_filter .search_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0.4rem;
+  gap: 1rem;
+}
+.DS_filter .search_card .label_municipio {
+  font-weight: bold;
+}
+.DS_filter .search_card .search_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+.DS_filter .search_card .search_container input {
+  max-width: 400px;
+  width: 100%;
+  height: 1.5rem;
+  border: 1px solid #afb2b7;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: #EEF0F2;
+}
+.DS_filter .search_card .search_container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 150px;
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(155deg, #C62828 0%, #7F1616 100%);
+  color: #FFFFFF;
+  font-size: 0.9rem;
+}
+
+.DS_tables {
   display: grid;
-  min-height: calc(100vh - 112px);
-  place-items: center;
-  color: #6B7280;
-  font-size: 1.1rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 1.25rem;
+}
+.DS_tables .DS_table_card {
+  overflow: hidden;
+  border: 1px solid #E1E4E9;
+  box-shadow: 0 8px 24px rgba(20, 22, 30, 0.06), 0 2px 6px rgba(20, 22, 30, 0.04);
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  padding: 0.8rem;
+}
+.DS_tables .DS_table_card .DS_table_heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: #FFFFFF;
+}
+.DS_tables .DS_table_card .DS_table_heading h3 {
+  margin: 0;
+  color: #252A31;
+  font-size: 0.95rem;
+}
+.DS_tables .DS_table_card .DS_table_heading span {
+  color: #77808B;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.DS_tables .DS_table_card .DS_table_scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.DS_tables .DS_table_card .DS_salary_table {
+  min-width: 2400px;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.DS_tables .DS_table_card .DS_salary_table th, .DS_tables .DS_table_card .DS_salary_table td {
+  border-bottom: 1px solid #E1E4E9;
+  box-sizing: border-box;
+  padding: 0 0.45rem;
+  height: 2rem;
+  text-align: center;
+  white-space: nowrap;
+}
+.DS_tables .DS_table_card .DS_salary_table thead th {
+  background: linear-gradient(155deg, #C62828 0%, #7F1616 100%);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.DS_tables .DS_table_card .DS_salary_table thead th:first-child, .DS_tables .DS_table_card .DS_salary_table tbody th {
+  width: 5rem;
+}
+.DS_tables .DS_table_card .DS_salary_table tbody th {
+  color: #252A31;
+  background: #FFFFFF;
+  font-size: 0.85rem;
+}
+.DS_tables .DS_table_card .DS_salary_table td {
+  color: #29313A;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+}
+.DS_tables .DS_table_card .DS_salary_table tbody tr:nth-child(even) td {
+  background: #ecedee;
 }
 
 .TG_AVE {
@@ -337,8 +469,9 @@ header .icon_header span {
 }
 .TG_AVE .dados_container .tabela_container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   border: 1px solid #E1E4E9;
   box-shadow: 0 8px 24px rgba(20, 22, 30, 0.06), 0 2px 6px rgba(20, 22, 30, 0.04);
   border-radius: 10px;
@@ -346,8 +479,11 @@ header .icon_header span {
   padding: 0.8rem;
   max-height: none;
   min-height: 150px;
-  height: 200px;
+  height: auto;
   max-width: 1200px;
+  width: 100%;
+}
+.TG_AVE .dados_container .tabela_container #historico {
   width: 100%;
 }
 .TG_AVE .dados_container .tabela_container .tabela_historico {
@@ -384,6 +520,31 @@ header .icon_header span {
 }
 .TG_AVE .dados_container .tabela_container .tabela_historico colgroup col {
   margin: 1rem;
+}
+.TG_AVE .dados_container .dot_tabela {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #E1E4E9;
+  margin: 0.5rem;
+}
+.TG_AVE .dados_container .dot_tabela .dot_container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+}
+.TG_AVE .dados_container .dot_tabela .dot_container .dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  flex: 0 0 0.7rem;
+  border-radius: 50%;
 }
 .TG_AVE .dados_container .grafico {
   display: flex;

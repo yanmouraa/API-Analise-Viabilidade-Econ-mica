@@ -85,6 +85,95 @@ async function main() {
             });
         }
     }
+    const pspnA2025 = [
+    2973.91,
+    3063.13,
+    3155.02,
+    3249.67,
+    3347.16
+    ];
+
+    const pspnB2025 = [
+        3420.00,
+        3522.60,
+        3628.27,
+        3737.12,
+        3849.23
+    ];
+
+    const pspnC2025 = [
+        3642.30,
+        3751.56,
+        3864.11,
+        3980.03,
+        4099.44
+    ];
+
+    const pspnD2025 = [
+        4006.52,
+        4126.72,
+        4250.52,
+        4378.04,
+        4509.38
+    ];
+
+    function completarClasses(valores, total = 23) {
+        const resultado = [...valores];
+
+        while (resultado.length < total) {
+            const ultimo = resultado[resultado.length - 1];
+
+            resultado.push(
+                Number((ultimo * 1.03).toFixed(2))
+            );
+        }
+
+        return resultado;
+    }
+
+    const pspnACompleto = completarClasses(pspnA2025);
+    const pspnBCompleto = completarClasses(pspnB2025);
+    const pspnCCompleto = completarClasses(pspnC2025);
+    const pspnDCompleto = completarClasses(pspnD2025);
+
+    await prisma.PSPN.createMany({
+        data: pspnACompleto.map((salario, index) => ({
+            ano: 2025,
+            nivel: "A",
+            classe: index + 1,
+            salario
+        }))
+    });
+
+    await prisma.PSPN.createMany({
+        data: pspnBCompleto.map((salario, index) => ({
+            ano: 2025,
+            nivel: "B",
+            classe: index + 1,
+            salario
+        }))
+    });
+
+    await prisma.PSPN.createMany({
+        data: pspnCCompleto.map((salario, index) => ({
+            ano: 2025,
+            nivel: "C",
+            classe: index + 1,
+            salario
+        }))
+    });
+
+    await prisma.PSPN.createMany({
+        data: pspnDCompleto.map((salario, index) => ({
+            ano: 2025,
+            nivel: "D",
+            classe: index + 1,
+            salario
+        }))
+    });
+
+    console.log(pspnACompleto);
+    console.log(pspnACompleto.length);
 }
 
 main()

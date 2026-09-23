@@ -276,6 +276,150 @@ header {
     }
 }
 
+.DS_intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1440px;
+    margin: 0 auto 1.5rem;
+    gap: 2rem;
+}
+
+.DS_filter {
+    @include flexSpaceBetween();
+    @include cardBorder();
+    max-width: 600px;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem;
+
+    .search_card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        padding: .4rem;
+        gap: 1rem;
+
+        .label_municipio {
+            font-weight: bold;
+        }
+
+        .search_container {
+            @include flexSpaceBetween();
+            width: 100%;
+            gap: .5rem;
+
+            input {
+                max-width: 400px;
+                width: 100%;
+                height: 1.5rem;
+                border: 1px solid #afb2b7;
+                border-radius: $border-radius;
+                padding: .5rem;
+                background-color: $cinza-claro;
+            }
+
+            button {
+                @include flexCenter();
+                gap: .6rem;
+                max-width: 150px;
+                width: 100%;
+                height: 2.5rem;
+                padding: 0 1rem;
+                border: none;
+                border-radius: $border-radius;
+                cursor: pointer;
+                background: $vermelho-gradiente;
+                color: $branco;
+                font-size: .9rem;
+            }
+        }
+    }
+}
+
+.DS_tables {
+    display: grid;
+    max-width: 1440px;
+    margin: 0 auto;
+    gap: 1.25rem;
+
+    .DS_table_card {
+        overflow: hidden;
+        @include cardBorder();
+        padding: .8rem;
+
+        .DS_table_heading {
+            @include flexSpaceBetween();
+            padding: .5rem;
+            background: $branco;
+
+            h3 {
+                margin: 0;
+                color: #252A31;
+                font-size: .95rem;
+            }
+
+            span {
+                color: #77808B;
+                font-size: .72rem;
+                text-transform: uppercase;
+                letter-spacing: .05em;
+            }
+        }
+
+        .DS_table_scroll {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .DS_salary_table {
+            min-width: 2400px;
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+
+            th, td {
+                border-bottom: 1px solid #E1E4E9;
+                box-sizing: border-box;
+                padding: 0 .45rem;
+                height: 2rem;
+                text-align: center;
+                white-space: nowrap;
+            }
+
+            thead th {
+                background: $vermelho-gradiente;
+                color: $branco;
+                font-size: .72rem;
+                font-weight: 700;
+            }
+
+            thead th:first-child, tbody th {
+                width: 5rem;
+            }
+
+            tbody th {
+                color: #252A31;
+                background: $branco;
+                font-size: .85rem;
+            }
+
+            td {
+                color: #29313A;
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: .72rem;
+            }
+
+            tbody tr:nth-child(even) td {
+                background: $cinza-linha-tabela;
+            }
+        }
+    }
+}
+
 .TG_AVE {
     @include flexColumn();
     background-color: $cinza-bc;
@@ -349,14 +493,21 @@ header {
         gap: 3rem;
 
         .tabela_container {
-            @include flexCenter();
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
             @include cardBorder();
             padding: .8rem;
             max-height: none;
             min-height: 150px;
-            height: 200px;
+            height: auto;
             max-width: 1200px;
             width: 100%;
+
+            #historico {
+                width: 100%;
+            }
 
             .tabela_historico {
                 border-collapse: collapse;
@@ -407,6 +558,35 @@ header {
                     }
                 }
             }
+        }
+
+        .dot_tabela {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                width: 100%;
+                gap: .75rem 1.25rem;
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid #E1E4E9;
+                margin: .5rem;
+
+                .dot_container {
+                    display: flex;
+                    align-items: center;
+                    gap: .5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: .9rem;
+
+                    .dot {
+                        width: .7rem;
+                        height: .7rem;
+                        flex: 0 0 .7rem;
+                        border-radius: 50%;
+                    }
+                }
+
         }
 
         .grafico {

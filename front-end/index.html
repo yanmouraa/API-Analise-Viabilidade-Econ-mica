@@ -63,11 +63,29 @@
         </form>
        
         <div class="dados_container">
-            <div id="historico" class="tabela_container"></div>
+            <div class="tabela_container">
+                <div id="historico"></div>
+
+                <div class="dot_tabela" aria-label="Legenda dos indicadores">
+                    <div class="dot_container">
+                        <div class="dot" style="background: #ec1717"></div> Limite Máximo - 54%
+                    </div>
+
+                    <div class="dot_container">
+                        <div class="dot" style="background: #ff8400;"></div> Limite Prudencial - 51,3%
+                    </div>
+
+                    <div class="dot_container">
+                        <div class="dot" style="background: #e6bc26;"></div> Limite de Alerta - 48,6%
+                    </div>
+                </div>
+            </div>
+
             <div id="grafico-container" class="grafico">
                 <div class="grafico_1">
                     <p>Evolução Percentual Anual</p>
                     <canvas id="grafico-ev-anual"></canvas>
+
                     <div class="info_dots">
                         <div class="dot_container">
                             <div class="dot" style="background: rgba(250, 162, 40, 0.6)"></div> RCL

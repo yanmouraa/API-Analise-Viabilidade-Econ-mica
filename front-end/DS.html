@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Defasagem Salarial</title>
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 </head>
 <body class="sidebar_collapsed">
     <header>
@@ -41,10 +41,24 @@
         </nav>
     </aside>
 
-    <main class="page_placeholder">
-        <p>Área de Defasagem Salarial</p>
+    <main class="DS_page">
+        <section class="DS_intro">
+            <form id="form-salarios" class="DS_filter">
+                <div class="search_card">
+                    <label class="label_municipio" for="inp-salario-municipio">Município</label>
+                    <div class="search_container">
+                        <input id="inp-salario-municipio" name="municipio" list="salarios-datalist" autocomplete="off" required>
+                    <datalist id="salarios-datalist"></datalist>
+                        <button type="submit">Consultar</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section id="tabelas-salariais" class="DS_tables" aria-live="polite"></section>
     </main>
 
     <script src="./js/sidebar.js"></script>
+    <script src="./js/salarios.js"></script>
 </body>
 </html>

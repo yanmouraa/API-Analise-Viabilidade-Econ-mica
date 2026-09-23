@@ -128,9 +128,9 @@ function verificarDtp() {
     dtpPercentual.forEach((celula) => {
         const valor = Number.parseFloat(celula.textContent.replace("%", ""));
 
-        if (valor >= 48.6 && valor < 51.3) {
+        if (valor >= 48.6 && valor < 51.29) {
             celula.style.color = "#e6bc26";
-        } else if (valor >= 51.3 && valor < 54) {
+        } else if (valor >= 51.3 && valor < 53.9) {
             celula.style.color = "#ff8400";
         } else if (valor >= 54) {
             celula.style.color = "#ec1717";
